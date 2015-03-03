@@ -1,0 +1,17 @@
+[
+	{
+		"id": "tools",
+		"children":
+		[
+			{
+				"caption": "Variate",
+				"id": "Variate",
+				"children":
+				[
+					{ "caption": "Start Variate", "command": "start_variate" },
+					{ "caption": "Stop Variate", "command": "stop_variate" }
+				]
+			}
+		]
+	}
+]
