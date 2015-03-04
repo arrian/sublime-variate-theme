@@ -11,6 +11,8 @@ SUBLIME_PREFERENCES = 'Preferences.sublime-settings'
 
 variate = False
 
+SECONDS_PER_DAY = 60.0 * 60.0 * 24.0
+
 def get_elapsed_seconds():
 	"""
 	Gets the total number of elapsed seconds in the day.
@@ -24,7 +26,9 @@ elapsed_seconds_simulated = 0.0
 
 def get_elapsed_seconds_simulated():
 	global elapsed_seconds_simulated
-	elapsed_seconds_simulated = elapsed_seconds_simulated + 1000.0
+	elapsed_seconds_simulated = elapsed_seconds_simulated + 100.0
+	if elapsed_seconds_simulated > (SECONDS_PER_DAY / 2.0):
+		elapsed_seconds_simulated = 0.0
 	return elapsed_seconds_simulated
 
 class StartVariateCommand(sublime_plugin.WindowCommand):
@@ -73,7 +77,7 @@ class StartVariateCommand(sublime_plugin.WindowCommand):
 		"""
 		Gets a colour based on the time of the day.
 		"""
-		return self.get_hex_from_rgb(int(255.0 * (get_elapsed_seconds_simulated() / 86400.0)), 0, 0)
+		return self.get_hex_from_rgb(0, 0, int(255.0 * (get_elapsed_seconds_simulated() / SECONDS_PER_DAY)))
 
 	def get_hex_from_rgb(self, r, g, b):
 		return '#%02X%02X%02X' % (r,g,b)
